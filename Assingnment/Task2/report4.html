@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.2 on win32)" generated="20240419 20:29:17.736" rpa="false" schemaversion="4">
+<suite id="s1" name="Task2" source="D:\veera project\seperat\robot framework practice\Api_Testing\demo_Rf1\Task2.robot">
+<test id="s1-t1" name="Executing tests" line="44">
+<kw name="List users">
+<doc>Test Get a list of all users</doc>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${listu}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20240419 20:29:18.001" level="INFO">GET Request : url=https://reqres.in/api/users?page=2 
+ path_url=/api/users?page=2 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240419 20:29:18.001" level="INFO">GET Response : url=https://reqres.in/api/users?page=2 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 19 Apr 2024 14:59:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1713504608&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=AXsHYCL1RWVi%2FCA7p9r8cKXKo7lK2PW2APjf3RH%2BopQ%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1713504608&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=AXsHYCL1RWVi%2FCA7p9r8cKXKo7lK2PW2APjf3RH%2BopQ%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"406-ut0vzoCuidvyMf8arZpMpJ6ZRDw"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '5311', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '876dc1fe7d8b7fab-MAA', 'Content-Encoding': 'gzip'} 
+ body={"page":2,"per_page":6,"total":12,"total_pages":2,"data":[{"id":7,"email":"michael.lawson@reqres.in","first_name":"Michael","last_name":"Lawson","avatar":"https://reqres.in/img/faces/7-image.jpg"},{"id":8,"email":"lindsay.ferguson@reqres.in","first_name":"Lindsay","last_name":"Ferguson","avatar":"https://reqres.in/img/faces/8-image.jpg"},{"id":9,"email":"tobias.funke@reqres.in","first_name":"Tobias","last_name":"Funke","avatar":"https://reqres.in/img/faces/9-image.jpg"},{"id":10,"email":"byron.fields@reqres.in","first_name":"Byron","last_name":"Fields","avatar":"https://reqres.in/img/faces/10-image.jpg"},{"id":11,"email":"george.edwards@reqres.in","first_name":"George","last_name":"Edwards","avatar":"https://reqres.in/img/faces/11-image.jpg"},{"id":12,"email":"rachel.howell@reqres.in","first_name":"Rachel","last_name":"Howell","avatar":"https://reqres.in/img/faces/12-image.jpg"}],"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg timestamp="20240419 20:29:18.002" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:17.895" endtime="20240419 20:29:18.002"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240419 20:29:18.002" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:18.002" endtime="20240419 20:29:18.002"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240419 20:29:18.003" level="INFO">{'page': 2, 'per_page': 6, 'total': 12, 'total_pages': 2, 'data': [{'id': 7, 'email': 'michael.lawson@reqres.in', 'first_name': 'Michael', 'last_name': 'Lawson', 'avatar': 'https://reqres.in/img/faces/7-image.jpg'}, {'id': 8, 'email': 'lindsay.ferguson@reqres.in', 'first_name': 'Lindsay', 'last_name': 'Ferguson', 'avatar': 'https://reqres.in/img/faces/8-image.jpg'}, {'id': 9, 'email': 'tobias.funke@reqres.in', 'first_name': 'Tobias', 'last_name': 'Funke', 'avatar': 'https://reqres.in/img/faces/9-image.jpg'}, {'id': 10, 'email': 'byron.fields@reqres.in', 'first_name': 'Byron', 'last_name': 'Fields', 'avatar': 'https://reqres.in/img/faces/10-image.jpg'}, {'id': 11, 'email': 'george.edwards@reqres.in', 'first_name': 'George', 'last_name': 'Edwards', 'avatar': 'https://reqres.in/img/faces/11-image.jpg'}, {'id': 12, 'email': 'rachel.howell@reqres.in', 'first_name': 'Rachel', 'last_name': 'Howell', 'avatar': 'https://reqres.in/img/faces/12-image.jpg'}], 'support': {'url': 'https://reqres.in/#support-heading', 'text': 'To keep ReqRes free, contributions towards server costs are appreciated!'}}</msg>
+<status status="PASS" starttime="20240419 20:29:18.002" endtime="20240419 20:29:18.003"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:17.894" endtime="20240419 20:29:18.003"/>
+</kw>
+<kw name="Create User">
+<arg>saikiran</arg>
+<arg>tester</arg>
+<doc>Test Create a new user with  valid data</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${request}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240419 20:29:18.004" level="INFO">${request} = {'name': 'saikiran', 'job': 'tester'}</msg>
+<status status="PASS" starttime="20240419 20:29:18.004" endtime="20240419 20:29:18.004"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${createu}</arg>
+<arg>json=${request}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20240419 20:29:18.434" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '37', 'Content-Type': 'application/json'} 
+ body=b'{"name": "saikiran", "job": "tester"}' 
+ </msg>
+<msg timestamp="20240419 20:29:18.434" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Fri, 19 Apr 2024 14:59:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1713538759&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=N5mJMARm5TPVGKDgkN6gw1w7%2Bf7o%2FkVkbzZFAPNXGs8%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1713538759&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=N5mJMARm5TPVGKDgkN6gw1w7%2Bf7o%2FkVkbzZFAPNXGs8%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-qq0PxS9h6FUHz1eoZeF9B9Ox3F0"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '876dc1fefd317f7f-MAA'} 
+ body={"name":"saikiran","job":"tester","id":"171","createdAt":"2024-04-19T14:59:19.791Z"} 
+ </msg>
+<msg timestamp="20240419 20:29:18.434" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:18.004" endtime="20240419 20:29:18.434"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>${name}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20240419 20:29:18.434" endtime="20240419 20:29:18.434"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240419 20:29:18.434" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:18.434" endtime="20240419 20:29:18.434"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240419 20:29:18.434" level="INFO">{'name': 'saikiran', 'job': 'tester', 'id': '171', 'createdAt': '2024-04-19T14:59:19.791Z'}</msg>
+<status status="PASS" starttime="20240419 20:29:18.434" endtime="20240419 20:29:18.434"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:18.003" endtime="20240419 20:29:18.434"/>
+</kw>
+<kw name="Create User">
+<arg>snathosh</arg>
+<arg>Manual Tester</arg>
+<doc>Test Create a new user with  valid data</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${request}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240419 20:29:18.434" level="INFO">${request} = {'name': 'snathosh', 'job': 'Manual Tester'}</msg>
+<status status="PASS" starttime="20240419 20:29:18.434" endtime="20240419 20:29:18.434"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${createu}</arg>
+<arg>json=${request}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20240419 20:29:18.837" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '44', 'Content-Type': 'application/json'} 
+ body=b'{"name": "snathosh", "job": "Manual Tester"}' 
+ </msg>
+<msg timestamp="20240419 20:29:18.837" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Fri, 19 Apr 2024 14:59:20 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '91', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1713538760&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=mDI4Mzy%2FpXVvKyx6ST9anA4xjPln7oPBScu2LhbBKB0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1713538760&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=mDI4Mzy%2FpXVvKyx6ST9anA4xjPln7oPBScu2LhbBKB0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"5b-7bDEIj0tX59gaBy7HBqg1W1CX2s"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '876dc201ae7b7eaa-MAA'} 
+ body={"name":"snathosh","job":"Manual Tester","id":"715","createdAt":"2024-04-19T14:59:20.199Z"} 
+ </msg>
+<msg timestamp="20240419 20:29:18.837" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:18.434" endtime="20240419 20:29:18.837"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>${name}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20240419 20:29:18.837" endtime="20240419 20:29:18.837"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240419 20:29:18.837" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:18.837" endtime="20240419 20:29:18.837"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240419 20:29:18.837" level="INFO">{'name': 'snathosh', 'job': 'Manual Tester', 'id': '715', 'createdAt': '2024-04-19T14:59:20.199Z'}</msg>
+<status status="PASS" starttime="20240419 20:29:18.837" endtime="20240419 20:29:18.837"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:18.434" endtime="20240419 20:29:18.837"/>
+</kw>
+<kw name="Create User With Invalid data">
+<doc>Test create a new user with invalid data</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${request}</var>
+<arg>name="santhoshkumar"</arg>
+<arg>job=" "</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240419 20:29:18.837" level="INFO">${request} = {'name': '"santhoshkumar"', 'job': '" "'}</msg>
+<status status="PASS" starttime="20240419 20:29:18.837" endtime="20240419 20:29:18.837"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${createu}</arg>
+<arg>json=${request}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20240419 20:29:19.221" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '45', 'Content-Type': 'application/json'} 
+ body=b'{"name": "\\"santhoshkumar\\"", "job": "\\" \\""}' 
+ </msg>
+<msg timestamp="20240419 20:29:19.221" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Fri, 19 Apr 2024 14:59:20 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '92', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1713538760&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=mDI4Mzy%2FpXVvKyx6ST9anA4xjPln7oPBScu2LhbBKB0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1713538760&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=mDI4Mzy%2FpXVvKyx6ST9anA4xjPln7oPBScu2LhbBKB0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"5c-ler5JQVy3fl9GPXCL40rCy1M/Hc"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '876dc2042f677fb1-MAA'} 
+ body={"name":"\"santhoshkumar\"","job":"\" \"","id":"737","createdAt":"2024-04-19T14:59:20.586Z"} 
+ </msg>
+<msg timestamp="20240419 20:29:19.221" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:18.837" endtime="20240419 20:29:19.221"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>santhoshkumar</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20240419 20:29:19.221" endtime="20240419 20:29:19.221"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240419 20:29:19.221" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:19.221" endtime="20240419 20:29:19.221"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:18.837" endtime="20240419 20:29:19.221"/>
+</kw>
+<kw name="Update User">
+<arg>kiransai</arg>
+<arg>SDET</arg>
+<doc>Test Update the data of an existing user</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${request}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240419 20:29:19.221" level="INFO">${request} = {'name': 'kiransai', 'job': 'SDET'}</msg>
+<status status="PASS" starttime="20240419 20:29:19.221" endtime="20240419 20:29:19.221"/>
+</kw>
+<kw name="PATCH" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${updateu}</arg>
+<arg>json=${request}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20240419 20:29:19.649" level="INFO">PATCH Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '35', 'Content-Type': 'application/json'} 
+ body=b'{"name": "kiransai", "job": "SDET"}' 
+ </msg>
+<msg timestamp="20240419 20:29:19.649" level="INFO">PATCH Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 19 Apr 2024 14:59:21 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1713538760&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=mDI4Mzy%2FpXVvKyx6ST9anA4xjPln7oPBScu2LhbBKB0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1713538760&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=mDI4Mzy%2FpXVvKyx6ST9anA4xjPln7oPBScu2LhbBKB0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"47-qcI1HDtzaCLalJWpBmeYtQ3WV3E"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '876dc2068f5d7f97-MAA', 'Content-Encoding': 'gzip'} 
+ body={"name":"kiransai","job":"SDET","updatedAt":"2024-04-19T14:59:21.002Z"} 
+ </msg>
+<msg timestamp="20240419 20:29:19.649" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:19.221" endtime="20240419 20:29:19.649"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>${name}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20240419 20:29:19.649" endtime="20240419 20:29:19.649"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240419 20:29:19.649" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:19.649" endtime="20240419 20:29:19.649"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240419 20:29:19.649" level="INFO">{'name': 'kiransai', 'job': 'SDET', 'updatedAt': '2024-04-19T14:59:21.002Z'}</msg>
+<status status="PASS" starttime="20240419 20:29:19.649" endtime="20240419 20:29:19.649"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:19.221" endtime="20240419 20:29:19.649"/>
+</kw>
+<kw name="Delete User">
+<doc>Test Delete a created user</doc>
+<kw name="DELETE" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${deleteu}</arg>
+<arg>expected_status=204</arg>
+<doc>Sends a DELETE request.</doc>
+<msg timestamp="20240419 20:29:20.050" level="INFO">DELETE Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20240419 20:29:20.050" level="INFO">DELETE Response : url=https://reqres.in/api/users/2 
+ status=204, reason=No Content 
+ headers={'Date': 'Fri, 19 Apr 2024 14:59:21 GMT', 'Content-Length': '0', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1713538761&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=Wgi5KTT3Z22nlRM6qWmF7dPLB6SYbLt2iKp%2B18jiuHs%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1713538761&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=Wgi5KTT3Z22nlRM6qWmF7dPLB6SYbLt2iKp%2B18jiuHs%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '876dc2092b627ed6-MAA'} 
+ body=None 
+ </msg>
+<msg timestamp="20240419 20:29:20.050" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:19.649" endtime="20240419 20:29:20.050"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>204</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20240419 20:29:20.050" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240419 20:29:20.050" endtime="20240419 20:29:20.050"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:19.649" endtime="20240419 20:29:20.050"/>
+</kw>
+<status status="PASS" starttime="20240419 20:29:17.894" endtime="20240419 20:29:20.050"/>
+</test>
+<status status="PASS" starttime="20240419 20:29:17.751" endtime="20240419 20:29:20.050"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Task2">Task2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
